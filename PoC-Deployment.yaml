@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poc-deployment
+  namespace: default
+  labels:
+    app: poc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: poc
+  template:
+    metadata:
+      labels:
+        app: poc
+    spec:
+      containers:
+      - name: poc-container
+        image: poc-webserver:v1
+        ports:
+        - containerPort: 80
